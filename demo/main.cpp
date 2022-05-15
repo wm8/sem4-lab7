@@ -6,8 +6,10 @@
 #include <string>
 #include <fstream>
 #include "Server.h"
+//Функция загрузки данных из файла json (по ТЗ)
 void LoadData(std::string filePath)
 {
+ //Пока сервер запущен
   while (Server::isRunning)
   {
     std::ifstream jsonFile(filePath);
@@ -29,7 +31,7 @@ int main ()
 {
   std::thread th2(StartServer);
   std::thread th1(LoadData,
-  "/home/user/CLionProjects/lab-07-http-server/data/suggestions.json");
+  "../data/suggestions.json");
   std::cout << "Server is running!" << std::endl;
   th1.join();
   th2.join();
